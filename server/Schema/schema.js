@@ -27,6 +27,7 @@ const TaskType = new GraphQLObjectType({
     })
   })
 
+
 const UserType = new GraphQLObjectType({
     name: 'User',
     fields: () => ({
@@ -35,3 +36,17 @@ const UserType = new GraphQLObjectType({
         email: {type: GraphQLString},
     })
 })
+
+const RootQuery = new GraphQLObjectType({
+    //FIND A USER
+    name : "RootQueryType",
+    fields : {
+        users:{},
+    },
+
+
+})
+module.exports = new GraphQLSchema({
+    query: RootQuery,
+  });
+  

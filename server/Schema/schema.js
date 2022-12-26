@@ -36,7 +36,7 @@ const UserType = new GraphQLObjectType({
         email: {type: GraphQLString},
     })
 })
-
+//queryes
 const RootQuery = new GraphQLObjectType({
     //FIND A USER
     name : "RootQueryType",
@@ -44,8 +44,10 @@ const RootQuery = new GraphQLObjectType({
         users:{},
     },
 
-
 })
+
+//mutations
+
 module.exports = new GraphQLSchema({
     query: RootQuery,
   });

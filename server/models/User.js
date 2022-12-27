@@ -1,22 +1,27 @@
-const mongoose = require('mongoose');
-//schema for user data
-const UserSchema = new mongoose.Schema({
-    name: {
-        type: String,
-    },
-    email: {
-        type: String,
-    },
-    password: {
-        type: String,
-    },
-    //hours worked, will be calculated from timer on react frontend and also called to display Statistics
-    hours:{
-        //need to store hours along with the corresponding date(dictionary with date + number?)
-        type: Number,
-    },
-})
+const mongoose = require("mongoose");
 
-//exporting the model
-module.exports = mongoose.model('User', UserSchema);
+const userSchema = new mongoose.schema({
+  username: String,
+  passwordHash: String,
+  email: String,
+  tasks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Task",
+    },
+  ],
+});
+/* password security */
+/* */ userSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    // the passwordHash should not be revealed
+    delete returnedObject.passwordHash;
+  },
+});
 
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

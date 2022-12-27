@@ -15,11 +15,12 @@ const Timer = () => {
       setTimer(time - 1);
     }, 1000);
   }
+  //when times up we'll send a request to the backend to update the hours worked
   if (time === 0) {
     alert("Time is up! time for a break!");
     setIsRunning(false);
   }
-  
+
   return (
     <div style={{
       display: 'flex',

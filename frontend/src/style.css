@@ -1,0 +1,22 @@
+.sidebar{
+    position: absolute;
+    background-color: #110f18;
+    color:#110f18;
+    top:0;
+    left:0;
+    left:0;
+    height: 100vh;
+    width: 50vh;
+}
+.sidebar h1 {
+    color:beige;
+    font-size: 100px;
+}
+.sidebar ul{
+    font-size: 60px;
+    color:beige;
+}
+
+body {
+    background-color: #15141b;
+}

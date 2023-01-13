@@ -16,20 +16,18 @@ const Sidebar = () => {
       },
     ]
   }
-
+  
   //adding adjustable state to the sidebar
 
 
 
   return (
     <div className = 'sidebar-container'>
-    <div className = 'sidebar'
-    >
+    <div className = 'sidebar'>
         <h1>Tasks</h1>
       <ul>
       {dummy_data.tasks.map(task=><li>{task.description} </li>)}
       </ul>
-
     </div>
     </div>
   )

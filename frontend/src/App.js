@@ -1,12 +1,15 @@
-import  './style.css';
-import Timer from './components/Timer';
-import Sidebar from './components/Sidebar';
+import "./style.css";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
 function App() {
   return (
-    <div className="App">
-      <Sidebar/>
-      <Timer/>
-  </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 

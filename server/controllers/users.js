@@ -1,21 +1,42 @@
-const bcrypt = require('bcrypt');
-const userRouters = require('express').Router()
-const User = require('../models/User');
+const usersRouter = require('express').Router()
+const bcrypt = require('bcrypt')
+const User = require('../models/User')
 
-userRouters.post('/', async (req, res) => {
 
-    const {username, password, email} = req.body;
-    const saltRounds = 10;
-    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+usersRouter.post('/', async (request, response)  =>{
+    const {username, name, password} = request.body 
+    const saltRounds = 10
+    const passwordHash = await bcrypt.hash(password, saltRounds)
+    const existingUser = await User.findOne({username})
+    if (existingUser){
+        return response.status(400).json({
+            error : "username must be unique"
+        })
+    }
+
+    if (password.length< 3) {
+        return response.status(400).json({
+            error : "username and password must be at least 3 characters long"
+        })
+    }
+    
     const user = new User({
         username,
-        passwordHash,
-        email,
-    });
-    const savedUser = await user.save();
-    res.json(savedUser);
+        name,
+        passwordHash
+    })  
+    const savedUser = await user.save()
+    return response.status(201).json(savedUser)
 
 
 
-});
-module.exports = userRouters;
+})
+
+usersRouter.get('/', async (request, response) =>{
+const users = await User.find({})
+  response.json(users)
+
+})
+
+module.exports = usersRouter

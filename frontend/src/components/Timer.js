@@ -26,6 +26,16 @@ const Timer = () => {
     }, 1000);
   }
   //when times up we'll send a request to the backend to update the hours worked
+  if (time === 0) {
+    setIsRunning(false);
+    setTimer(45);
+  }
+
+
+
+
+
+
 
   return (
     <div style={{
@@ -34,10 +44,10 @@ const Timer = () => {
       justifyContent: 'center',
       height: '80vh',
     }}>
-      <div className = 'timer' style= {{width: 500, height: 500}}>
+      <div className = 'timer' style= {{width: 500, height: 500,}}>
         
         <CircularProgressbarWithChildren value={time} text={`${time}`} styles = {{
-  
+
         }}
         >
         <button style={{ width: "200px", height: "20px",  position: 'relative', bottom: -50}} onClick={handleStart}>Start</button>

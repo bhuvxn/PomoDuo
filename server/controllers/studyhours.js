@@ -37,7 +37,6 @@ studyhoursRouter.post('/', async (request, response) => {
         date: new Date().toISOString().slice(0, 10),
         hours: request.body.hours,
         user: user._id
-
     });
 
     const savedStudyHours = await studyhours.save();

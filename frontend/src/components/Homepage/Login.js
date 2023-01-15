@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import loginService from "../services/login";
-import pomoduosService from "../services/pomoduos";
+import loginService from "../../services/login";
+import pomoduosService from "../../services/pomoduos";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -10,7 +10,6 @@ const Login = () => {
   if (window.localStorage.getItem("loggedUser") !== null) {
     window.location.href = "/";
   }
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,15 +24,12 @@ const Login = () => {
       if (user) {
         navigate("/");
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.log("wrong credentials");
     }
-
   };
 
   return (
-    
     <div className="login">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>

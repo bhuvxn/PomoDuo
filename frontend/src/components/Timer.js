@@ -5,8 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 const Timer = () => {
   const [time, setTimer] = useState(45);
   const [isRunning, setIsRunning] = useState(false);
-
-
+  
   //starting the pomodor timer
   const handleStart = () => {
     setIsRunning(true);
@@ -20,18 +19,15 @@ const Timer = () => {
 
 
   if (isRunning) {
+
+    if (time === 0) {
+      setIsRunning(false);
+      return;
+    }
     setTimeout(() => {
       setTimer(time - 1);
     }, 1000);
   }
-  //when times up we'll send a request to the backend to update the hours worked
-  if (time === 0) {
-    setIsRunning(false);
-    setTimer(45);
-  }
-
-
-
 
 
 

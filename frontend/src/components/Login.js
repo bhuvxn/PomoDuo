@@ -6,6 +6,12 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  if (window.localStorage.getItem("loggedUser") !== null) {
+    window.location.href = "/";
+  }
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // perform login logic here
